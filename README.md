@@ -199,7 +199,7 @@ Another thing to consider is the fact that a POD only mounts a secret/configmap 
  - File system notifications combined with a config/secret poller as sidecar: [example](https://golangexample.com/sidecar-to-watch-a-config-folder-and-reload-a-process-when-it-changes)
  - A forced restart of the PODs that use the serviceaccount when a certificate is issued/rotated, in a rolling upgrade manner (always making sure at least one POD is reachable, while all get deleted/refreshed over a period of time). This logic can be easily implemented into the existing code base of this POC.
 
-Last but not least, *this is proof of concept code*, so do not use this in production!
+Last but not least, **this is proof of concept code**, so do not use this in production!
 
 ## Extra
 
