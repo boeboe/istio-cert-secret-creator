@@ -194,7 +194,7 @@ Note that the pkcs12 envelope requires a password. The default password used is 
 
 ## Note
 
-The are some inherent security issues by exposing certificates as [Secrets](https://kubernetes.io/docs/concepts/configuration/secret) within kubernetes. Istio avoids these issues by directly injecting certificates in memory (gRPC exchanged), thereby avoiding kubernetes Secrets or on disk storage. This proof of concept is only ment to offer a possible integration scenario for workloads that can not or chose not to leverage the `istio-proxy` sidecar model. Consider the trade-offs that come with this approach carefully.
+There are some inherent security issues by exposing certificates as [Secrets](https://kubernetes.io/docs/concepts/configuration/secret) within kubernetes. Istio avoids these issues by directly injecting certificates in memory (gRPC exchanged), thereby avoiding kubernetes Secrets or on disk storage. This proof of concept is only ment to offer a possible integration scenario for workloads that can not or chose not to leverage the `istio-proxy` sidecar model. Consider the trade-offs that come with this approach carefully.
 
 Note that [Envoy support on Windows](https://blog.envoyproxy.io/general-availability-of-envoy-on-windows-267e4544994a) was announced on May 19 2021, so in the foreseeable future there might be a `istio-proxy` sidecar fully compatible with the Windows container system.
 
