@@ -195,7 +195,11 @@ The are some inherent security issues by exposing certificates as [Secrets](http
 
 Note that [Envoy support on Windows](https://blog.envoyproxy.io/general-availability-of-envoy-on-windows-267e4544994a) was announced on May 19 2021, so in the foreseeable future there might be a `istio-proxy` sidecar fully compatible with the Windows container system.
 
-Do not use this in production!
+Another thing to consider is the fact that a POD only mounts a secret/configmap once, at startup time. Corresponding changes to the secret will not be picked up by the container without extra measures. Those might include some of the following strategies:
+ - File system notifications combined with a config/secret poller as sidecar: [example](https://golangexample.com/sidecar-to-watch-a-config-folder-and-reload-a-process-when-it-changes)
+ - A forced restart of the PODs that use the serviceaccount when a certificate is issued/rotated, in a rolling upgrade manner (always making sure at least one POD is reachable, while all get deleted/refreshed over a period of time). This logic can be easily implemented into the existing code base of this POC.
+
+Last but not least, *this is proof of concept code*, so do not use this in production!
 
 ## Extra
 
