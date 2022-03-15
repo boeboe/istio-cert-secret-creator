@@ -4,10 +4,11 @@ This container image creates Istio Service Mesh certificates and exposes them in
 
 In most Istio use cases, when a workload starts, an `istio-agent` component running in `istio-proxy` container creates CSR request for the workload and sends it to Istiod via gRPC API. Istiod signs the CSR request and sends back the signed certificate to `istio-agent`. Envoy proxy (running in the same `istio-proxy` container as `istio-agent`) then requests the certificate from istio-agent via SDS API. The certificate in the Envoy proxy sidecar represents the [workload identity](https://istio.io/latest/docs/concepts/security/#istio-identity) and is used during [mTLS](https://istio.io/latest/docs/concepts/security/#mutual-tls-authentication) establishment and is the cornerstone of Istio's [authentication](https://istio.io/latest/docs/concepts/security/#authentication-policies) and [authorization](https://istio.io/latest/docs/concepts/security/#authorization-policies).
 
-In some cases, however, users want to join the mesh with a valid certificate, without relying on the `istio-proxy` sidecar. Some use cases include:
+In some cases, however, operational admins want workloads to join the mesh with a valid certificate, without relying on the `istio-proxy` sidecar. Some use cases include:
  - Windows container POD's running on Windows Kubernetes nodes. The `istio-proxy` sidecar currently does not support Windows environments.
  - Concerns about latency introduced by sidecar injection, or other reasons to directly terminate mTLS in the application.
 
+Note that depending on the use case (**sidecar workload => secret mounting workload** vs **secret mounting workload => sidecar workload**), some of the features offered by the `envoy-proxy` sidecar will not be available.
 
 ## Build
 
