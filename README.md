@@ -36,7 +36,6 @@ In case you run the container outside kubernetes, you need to bindmount a valid 
 In order to deploy this container, you have to create a deployment with corresponding serviceaccount, clusterrole and clusterrolebinding, as exampled in the [kubernetes](./kubernetes) folder.
 
 ```yaml
----
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -85,7 +84,7 @@ metadata:
   name: cert-secret-creator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: ClusterRole
   name: cert-secret-creator
 subjects:
   - kind: ServiceAccount
@@ -115,7 +114,6 @@ spec:
             limits:
               cpu: 250m
               memory: 128Mi
-      restartPolicy: OnFailure
       serviceAccountName: cert-secret-creator
 ```
 
