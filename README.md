@@ -155,6 +155,8 @@ The following is the overview of the available labels:
 |`cert-as-secret.tetrate.io/cert-type`| pem | The type of your secret, can be `pem` or `pkcs12` | No |
 |`cert-as-secret.tetrate.io/enabled`| - | To enable scanning, required both on the namespace and the serviceaccount | Yes |
 
+TTL values can be expressed in second (`5s`), minutes (`10m`), hours (`2h`), days (`1d`), weeks (`4w`) or years (`1y`).
+
 ### PEM Certificates
 
 For `cert-as-secret.tetrate.io/cert-type: pem` use cases, the secret contains the following secret data:
