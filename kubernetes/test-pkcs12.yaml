@@ -1,0 +1,60 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pkcs12-showcase
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/cert-max-ttl: 1y
+    cert-as-secret.tetrate.io/cert-type: pkcs12
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pkcs12-max-ttl
+  namespace: pkcs12-showcase
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/cert-ttl: 5m
+    cert-as-secret.tetrate.io/cert-type: pkcs12
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pkcs12-ttl
+  namespace: pkcs12-showcase
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/cert-secret-name: different-name
+    cert-as-secret.tetrate.io/cert-type: pkcs12
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pkcs12-cert-name
+  namespace: pkcs12-showcase
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/cert-pkcs12-password: secretpassword
+    cert-as-secret.tetrate.io/cert-type: pkcs12
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pkcs12-cert-pkcs12-password
+  namespace: pkcs12-showcase
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/cert-max-ttl: 1w
+    cert-as-secret.tetrate.io/cert-pkcs12-password: anothersecretpassword
+    cert-as-secret.tetrate.io/cert-secret-name: combined-name
+    cert-as-secret.tetrate.io/cert-ttl: 1d
+    cert-as-secret.tetrate.io/cert-type: pkcs12
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pkcs12-combined
+  namespace: pkcs12-showcase

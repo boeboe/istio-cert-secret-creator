@@ -1,0 +1,7 @@
+.venv/
+.vscode/
+.gitignore
+backup/
+kubernetes/
+Dockerfile
+Makefile

@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pem-showcase
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/cert-max-ttl: 1y
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pem-max-ttl
+  namespace: pem-showcase
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/cert-ttl: 5m
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pem-ttl
+  namespace: pem-showcase
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/cert-secret-name: different-name
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pem-cert-name
+  namespace: pem-showcase
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    cert-as-secret.tetrate.io/cert-max-ttl: 1w
+    cert-as-secret.tetrate.io/cert-secret-name: combined-name
+    cert-as-secret.tetrate.io/cert-ttl: 1d
+    cert-as-secret.tetrate.io/cert-type: pem
+    cert-as-secret.tetrate.io/enabled: 'true'
+  name: pem-combined
+  namespace: pem-showcase
